@@ -32,7 +32,7 @@ export function parseBase64url(txt :string) :ArrayBuffer {
 
 
 export async function sha256(buffer :ArrayBuffer) :Promise<ArrayBuffer> {
-    return await crypto.subtle.digest('SHA-256', buffer)
+    return await crypto.subtle.digest('SHA-256', new DataView(buffer))
 }
 
 export function bufferToHex (buffer :ArrayBuffer) :string {

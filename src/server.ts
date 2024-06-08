@@ -133,7 +133,7 @@ type AlgoParams = AlgorithmIdentifier | RsaHashedImportParams | EcKeyImportParam
 
 async function parseCryptoKey(algoParams: AlgoParams, publicKey: string): Promise<CryptoKey> {
     const buffer = utils.parseBase64url(publicKey)
-    return crypto.subtle.importKey('spki', buffer, algoParams, false, ['verify'])
+    return crypto.subtle.importKey('spki', new DataView(buffer), algoParams, false, ['verify'])
 }
 
 
